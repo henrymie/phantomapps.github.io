@@ -174,6 +174,7 @@
     </form>
 </div>
 
+<script src="config.js"></script>
 <script>
     document.getElementById("staffAppForm").addEventListener("submit", async function(event) {
         event.preventDefault();
@@ -207,7 +208,7 @@
         };
 
         try {
-            const response = await fetch('https://discord.com/api/webhooks/1292579372993351720/_hF57GFpRrgmgEH8o9Z5hQaxNtMHh1mdGH8kkCDd4qM-gxuoovfJYTE79kXYUyW2zo4l', {
+            const response = await fetch(DISCORD_WEBHOOK_URL, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -222,6 +223,7 @@
                 alert("There was an error submitting the form.");
             }
         } catch (error) {
+            console.error('Error:', error);
             alert("Failed to submit form. Please try again.");
         }
     });
