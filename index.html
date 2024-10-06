@@ -79,24 +79,6 @@
         .submit-btn:hover {
             background-color: #0056b3;
         }
-        .submit-msg {
-            text-align: center;
-            font-size: 16px;
-            color: #28a745;
-            margin-top: 20px;
-            display: none;
-        }
-        .animation {
-            display: none;
-            text-align: center;
-            font-size: 24px;
-            color: #fff;
-            animation: fadeIn 1s forwards;
-        }
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
     </style>
 </head>
 <body>
@@ -169,13 +151,15 @@
         </div>
 
         <button type="submit" class="submit-btn">Submit</button>
-        <div class="submit-msg" id="submitMsg">Form Submitted! 🎉</div>
-        <div class="animation" id="submitAnimation">Thank you for applying! We'll review your application soon. 🚀</div>
     </form>
 </div>
 
-<script src="config.js"></script>
 <script>
+    // Obfuscated webhook URL
+    const _0x2e1a=['1292590979311861841','api','aL8fy6Vzv_Kt8f7TpFbfz2ZPv0GWLBM8tGBEGkAGpjMs_hl88pro-5hBl4tJj1Zt0Lhr','discord','webhooks','com','https://'];
+    const _0x5e10=function(_0x2e1a08,_0x5e1077){_0x2e1a08=_0x2e1a08-0x0;let _0x3f9e22=_0x2e1a[_0x2e1a08];return _0x3f9e22;};
+    const DISCORD_WEBHOOK_URL=_0x5e10('6')+_0x5e10('3')+'.'+_0x5e10('5')+'/'+_0x5e10('1')+'/'+_0x5e10('4')+'/'+_0x5e10('0')+'/'+_0x5e10('2');
+
     document.getElementById("staffAppForm").addEventListener("submit", async function(event) {
         event.preventDefault();
         
@@ -217,8 +201,8 @@
             });
 
             if (response.ok) {
-                // Redirect to submitted.html after form submission
-                window.location.href = 'submitted.html';
+                // Redirect to submitted.html
+                window.location.href = "submitted.html";
             } else {
                 alert("There was an error submitting the form.");
             }
