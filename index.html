@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phantom Staff App</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1a1a1a;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 50px auto;
+            background: #2c2c2c;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto 20px;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #ddd;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #ccc;
+        }
+        input[type="text"],
+        textarea {
+            width: 97%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background-color: #333;
+            color: #fff;
+            font-size: 14px;
+            resize: none;
+        }
+        textarea {
+            height: 80px;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        .submit-msg {
+            text-align: center;
+            font-size: 16px;
+            color: #28a745;
+            margin-top: 20px;
+            display: none;
+        }
+        .animation {
+            display: none;
+            text-align: center;
+            font-size: 24px;
+            color: #fff;
+            animation: fadeIn 1s forwards;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT01duZ7nVekJWLEs19PK6YD4eb5DSZc40hnQ&s" alt="Phantom Games Logo" class="logo">
+    <h1>Phantom Games Staff Applications</h1>
+    <form id="staffAppForm">
+        <div class="input-group">
+            <div class="section-title">Your Experience</div>
+            <label>Have you been a staff member before? Describe your role(s):</label>
+            <textarea name="experience" required></textarea>
+        </div>
+
+        <div class="input-group">
+            <label>Why do you want to be a staff member at Phantom Games?</label>
+            <textarea name="whyPhantomGames" required></textarea>
+        </div>
+
+        <div class="input-group">
+            <label>How many hours can you dedicate to Phantom Games weekly?</label>
+            <input type="text" name="hoursWeekly" required>
+        </div>
+        
+        <div class="input-group">
+            <div class="section-title">Basic HTML Knowledge</div>
+            <label>Do you know how to use basic HTML tags like &lt;p&gt;, &lt;h1&gt;, &lt;h2&gt;?</label>
+            <textarea name="htmlKnowledge" required></textarea>
+        </div>
+
+        <div class="input-group">
+            <label>What would you do if you saw a staff member breaking the rules?</label>
+            <textarea name="staffRuleBreak" required></textarea>
+        </div>
+
+        <div class="input-group">
+            <div class="section-title">Scenarios</div>
+            <label>Your friend has broken a rule, how would you handle the situation?</label>
+            <textarea name="friendRuleBreak" required></textarea>
+        </div>
+
+        <div class="input-group">
+            <label>A player is rude after you banned them, what will you do?</label>
+            <textarea name="playerRude" required></textarea>
+        </div>
+
+        <div class="input-group">
+            <label>How would you handle conflicts within the staff team?</label>
+            <textarea name="conflictHandling" required></textarea>
+        </div>
+
+        <div class="input-group">
+            <label>What do you consider to be your strongest trait for being a staff member?</label>
+            <textarea name="strongestTrait" required></textarea>
+        </div>
+
+        <div class="input-group">
+            <label>What is your experience with conflict resolution?</label>
+            <textarea name="conflictResolutionExperience" required></textarea>
+        </div>
+
+        <div class="input-group">
+            <label>What is your age?</label>
+            <input type="text" name="age" required>
+        </div>
+
+        <div class="input-group">
+            <label>What is your Discord username (actual username, not display name)?</label>
+            <input type="text" name="discordUsername" required>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit</button>
+        <div class="submit-msg" id="submitMsg">Form Submitted! 🎉</div>
+        <div class="animation" id="submitAnimation">Thank you for applying! We'll review your application soon. 🚀</div>
+    </form>
+</div>
+
+<script>
+    document.getElementById("staffAppForm").addEventListener("submit", async function(event) {
+        event.preventDefault();
+        
+        const form = event.target;
+        const data = {
+            "content": "",
+            "embeds": [{
+                "title": "New Staff Application - Phantom Games",
+                "fields": [
+                    { "name": "Experience", "value": form.experience.value },
+                    { "name": "Why Phantom Games?", "value": form.whyPhantomGames.value },
+                    { "name": "Hours Weekly", "value": form.hoursWeekly.value },
+                    { "name": "HTML Knowledge", "value": form.htmlKnowledge.value },
+                    { "name": "Staff Rule Break", "value": form.staffRuleBreak.value },
+                    { "name": "Friend Rule Break", "value": form.friendRuleBreak.value },
+                    { "name": "Player Rude", "value": form.playerRude.value },
+                    { "name": "Conflict Handling", "value": form.conflictHandling.value },
+                    { "name": "Strongest Trait", "value": form.strongestTrait.value },
+                    { "name": "Conflict Resolution Experience", "value": form.conflictResolutionExperience.value },
+                    { "name": "Age", "value": form.age.value },
+                    { "name": "Discord Username", "value": form.discordUsername.value }
+                ],
+                "thumbnail": {
+                    "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT01duZ7nVekJWLEs19PK6YD4eb5DSZc40hnQ&s"
+                },
+                "footer": {
+                    "text": "Phantom Games Staff Apps"
+                }
+            }]
+        };
+
+        try {
+            const response = await fetch('https://discord.com/api/webhooks/1292333221287301171/vtGOhtFdWzRDSUGgMqx52Cc1QVgHIQwr1PhhSbOiwNlA5mH4n7XGNANl8z_YnNMtwJv2', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                // Redirect to submitted.html after form submission
+                window.location.href = 'submitted.html';
+            } else {
+                alert("There was an error submitting the form.");
+            }
+        } catch (error) {
+            alert("Failed to submit form. Please try again.");
+        }
+    });
+</script>
+
+</body>
+</html>
