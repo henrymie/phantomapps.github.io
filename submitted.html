@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phantom Games Staff Application Submitted</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.5.1/confetti.browser.min.js"></script>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100%;
+            text-align: center;
+        }
+        .header {
+            background-color: #222;
+            width: 100%;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        h1 {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        .content {
+            margin-top: 50px;
+        }
+        .checkmark {
+            font-size: 100px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        .message {
+            font-size: 18px;
+            max-width: 80%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT01duZ7nVekJWLEs19PK6YD4eb5DSZc40hnQ&s" alt="Phantom Games Logo" class="logo">
+            <h1>Phantom Games Staff Applications</h1>
+        </div>
+        <div class="content">
+            <div class="checkmark">✔</div>
+            <p class="message">Your application has been successfully submitted!</p>
+        </div>
+    </div>
+    <script>
+        // Function to create a more elaborate confetti effect
+        function celebrateSubmission() {
+            // Initial burst
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+
+            // Continuous side bursts
+            const duration = 5 * 1000;
+            const end = Date.now() + duration;
+
+            (function frame() {
+                confetti({
+                    particleCount: 2,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 }
+                });
+                confetti({
+                    particleCount: 2,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 }
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+
+            // Random bursts
+            setTimeout(() => {
+                const intervalId = setInterval(() => {
+                    confetti({
+                        particleCount: 50,
+                        spread: 60,
+                        origin: { y: Math.random() - 0.2, x: Math.random() }
+                    });
+                }, 500);
+
+                setTimeout(() => clearInterval(intervalId), 3000);
+            }, 1000);
+        }
+
+        // Trigger the celebration when the page loads
+        window.onload = celebrateSubmission;
+    </script>
+</body>
+</html>
